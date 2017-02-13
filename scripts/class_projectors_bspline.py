@@ -22,7 +22,6 @@ sys.path.append( '..' )
 sys.path.append( '../projector_bspline/' ) 
 from projector_bspline import bspline_functions as bfun
 from pymodule_genradon import genradon as gr
-import myImageDisplay as dis
 import filters as fil
 
 
@@ -40,10 +39,9 @@ class projectors:
 
     ##  Init class projectors
     def __init__( self , npix , angles , ctr=0.0 , bspline_degree = 3 , proj_support_y=4 ,
-                  nsamples_y=2048 , radon_degree=0 , filt='ramp' , back='False', plot=False ):
+                  nsamples_y=2048 , radon_degree=0 , filt='ramp' , back='False' ):
     
         ##  Compute regridding look-up-table and deapodizer
-        self.plot = plot
         nang      = len( angles )
         angles    = np.arange( nang )
         angles    = ( angles * 180.0 )/myfloat( nang )
