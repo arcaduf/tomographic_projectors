@@ -40,12 +40,12 @@ myint = np.int
 class projectors:
 
     ##  Init class projectors
-    def __init__( self , npix , angles , oper='pd' , ctr=0.0 ):
+    def __init__( self , npix , angles , oper='pd' , ctr=0.0 , filt='ramp' ):
         nang = len( angles )
         angles1 = angles * np.pi / 180.0
 
         self.nang         = nang
-        self.filt         = 'ramp'
+        self.filt         = filt
         self.plot         = True
         self.angles       = angles1.astype( myfloat )
         self.oper         = oper

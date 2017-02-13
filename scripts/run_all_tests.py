@@ -78,11 +78,11 @@ def test1( abbr ):
     
     ##  Load selected projectors
     if abbr != 'bsp':
-        tp = cpr.projectors( n , a , oper=abbr )
+        tp = cpr.projectors( n , a , oper=abbr , filt='ramp' )
     else:
         tp = cpb.projectors( n , a , bspline_degree=3 , proj_support_y=4 ,
                              nsamples_y=2048 , radon_degree=0 , filt='ramp' , 
-                             back = False , plot=True  ) 
+                             back = False ) 
 
     ##  Create A^{T}y
     x1 = tp.At( y1 )
@@ -123,12 +123,12 @@ def test2( abbr ):
 
     ##  Compute forward projection
     if abbr != 'bsp':
-        tp = cpr.projectors( n , a , oper=abbr )
+        tp = cpr.projectors( n , a , oper=abbr , filt='ramp' )
     else:
         a *= np.pi/180.0
         tp = cpb.projectors( n , a , bspline_degree=3 , proj_support_y=4 ,
                              nsamples_y=2048 , radon_degree=0 , filt='ramp' , 
-                             back = False , plot=True  )    
+                             back = False )    
     sino = tp.A( image )
 
     return sino
@@ -155,12 +155,12 @@ def test3( abbr, sino ):
 
     ##  Compute non-filtered backprojection
     if abbr != 'bsp':
-        tp = cpr.projectors( n , a , oper=abbr )
+        tp = cpr.projectors( n , a , oper=abbr , filt='ramp' )
     else:
         a *= np.pi/180.0
         tp = cpb.projectors( n , a , bspline_degree=3 , proj_support_y=4 ,
                              nsamples_y=2048 , radon_degree=0 , filt='ramp' , 
-                             back = False , plot=True  )    
+                             back = False )    
     reco_nf = tp.At( sino )
 
     return reco_nf
@@ -187,12 +187,12 @@ def test4( abbr , sino ):
 
     ##  Compute non-filtered backprojection
     if abbr != 'bsp':
-        tp = cpr.projectors( n , a , oper=abbr )
+        tp = cpr.projectors( n , a , oper=abbr , filt='ramp' )
     else:
         a *= np.pi/180.0
         tp = cpb.projectors( n , a , bspline_degree=3 , proj_support_y=4 ,
                              nsamples_y=2048 , radon_degree=0 , filt='ramp' , 
-                             back = False , plot=True  )    
+                             back = False )    
     reco = tp.fbp( sino )
 
     return reco
